@@ -1,6 +1,5 @@
-// //INSTRUCTIONAL STAFF PROVIDED CODE
-// const router = require('express').Router();
-// const { Student } = require('../../models');
+const router = require('express').Router();
+const { User } = require('../../models');
 
 // router.post('/', async (req, res) => {
 //     // console.log(req.body);
@@ -27,4 +26,4 @@
 //     }
 // })
 
-// module.exports = router;
+module.exports = router;

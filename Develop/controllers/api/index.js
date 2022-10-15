@@ -1,8 +1,6 @@
-// //INSTRUCTIONAL STAFF PROVIDED CODE
-// const router = require('express').Router();
+const router = require('express').Router();
+const userRoutes = require('./userRoutes');
 
-// const stuRoutes = require('./stuRoutes');
+router.use('/users', userRoutes);
 
-// router.use('/student', stuRoutes);
-
-// module.exports = router;
+module.exports = router;

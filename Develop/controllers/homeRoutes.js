@@ -6,14 +6,18 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [User],
+            include: [
+                {
+                    model: User
+                },
+            ],
         });
-        const posts = postData.map((post) =>
-            post.get({ plain: true })
-        );
-        res.render('all-posts', { posts, loggedIn: req.session.loggedIn });
+        //serializing the data sot that template can be read.
+        const posts = postData.map((post) => post.get({ plain: true }));
+        res.render('homepage', { posts, loggedIn: req.session.loggedIn });
     } catch (err) {
         res.redirect('login')
+        //res.status(500).json(err) ->maybe?
     }
 });
 
