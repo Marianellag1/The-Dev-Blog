@@ -8,7 +8,10 @@ router.get('/', async (req, res) => {
         const postData = await Post.findAll({
             include: [
                 {
-                    model: User
+                    model: User,
+                    attributes: [
+                        "name"
+                    ],
                 },
             ],
         });
@@ -46,6 +49,14 @@ router.get('/post/:id', withAuth, async (req, res) => {
 })
 
 //login route
+router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/dashboard');//redirect to dashboard
+        return;
+    }
+    res.render('signup');
+});
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');

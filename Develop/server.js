@@ -35,7 +35,7 @@ const hbs = exphbs.create({ helpers });
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.set('views', './views');
+// app.set('views', './views');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -44,10 +44,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () =>
-    console.log(
-      `\nServer running on port ${PORT}. Visit http://localhost:${PORT} and create an account!`
-    )
-  );
+  app.listen(PORT, () => console.log('Now listening'));
 });
 
