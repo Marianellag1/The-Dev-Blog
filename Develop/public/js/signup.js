@@ -1,13 +1,13 @@
 const signUpForm = async (event) => {
     event.preventDefault();
-
-    const name = document.querySelector("#username-input-signup").value.trim();
+// getting from signup.handlebars
+    const username = document.querySelector("#username-input-signup").value.trim();
     const password = document.querySelector("#password-input-signup").value.trim();
 
-    if (name && password) {
+    if (username && password) {
         const res = await fetch("/api/users", {
             method: "POST", //userRoutes.js
-            body: JSON.stringify({ name, password }),
+            body: JSON.stringify({ username, password }),
             headers: {"Content-Type": "application/json"},
         });
         if (res.ok) {
@@ -17,6 +17,7 @@ const signUpForm = async (event) => {
         }
     }
 };
+
 document
-.querySelector("#signup-form")//id
-.addEventListener("submit", signUpForm)
+.querySelector('.btn')// || #signup-btn  (id)
+.addEventListener("submit", signUpForm);
