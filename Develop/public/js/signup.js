@@ -18,5 +18,5 @@ const signUpForm = async (event) => {
     }
 };
 document
-.querySelector(".signup-form")//id
+.querySelector("#signup-form")//id
 .addEventListener("submit", signUpForm)
