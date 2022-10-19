@@ -3,23 +3,24 @@ const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET all posts for dashboard
-// router.get('/', withAuth, async (req, res) => {
-//     try {
-//         const postData = await Post.findAll({
-//             where:
-//             {
-//                 "id": req.session.id
-//             },
-//             include: [User]
-//         });
-//         const posts = postData.map((post) =>
-//             post.get({ plain: true })
-//         );
-//         res.render('all-posts', { posts, loggedIn: req.session.loggedIn });
-//     } catch (err) {
-//         res.redirect('login')
-//     }
-// });
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            where:
+            {
+                "id": req.session.id
+            },
+            include: [User]
+        });
+        const posts = postData.map((post) =>
+            post.get({ plain: true })
+        );
+        res.render('all-posts', { posts, loggedIn: req.session.loggedIn });
+    } catch (err) {
+        res.redirect('login')
+    }
+});
+
 router.get('/', withAuth, async (req, res) => {
     try {
         const postData = await User.findByPk(req.session.user_id, {
