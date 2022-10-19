@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const userPost = await Post.create({
             
@@ -10,6 +10,6 @@ router.post('/', withAuth, async (req, res) => {
     } catch (err) {
         res.status(400).json(err);
     }
-})
+});
 
 module.exports = router;

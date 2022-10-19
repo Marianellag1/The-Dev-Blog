@@ -1,23 +1,25 @@
-const signUpForm = async (event) => {
+const signUpFormHandler = async (event) => {
     event.preventDefault();
-// getting from signup.handlebars
+
+    // getting from signup.handlebars
     const username = document.querySelector("#username-input-signup").value.trim();
     const password = document.querySelector("#password-input-signup").value.trim();
 
     if (username && password) {
-        const res = await fetch("/api/users", {
-            method: "POST", //userRoutes.js
+        const response = await fetch('/api/users', {
+            method: 'POST', //userRoutes.js
             body: JSON.stringify({ username, password }),
-            headers: {"Content-Type": "application/json"},
+            headers: { 'Content-Type': 'application/json' },
         });
-        if (res.ok) {
+
+        if (response.ok) {
             document.location.replace("/dashboard")//may have to change to dashboard
-        }else {
-            alert(res.statusText)
+        } else {
+            alert('Failed to sign up.')
         }
     }
 };
 
 document
 .querySelector('.btn')// || #signup-btn  (id)
-.addEventListener("submit", signUpForm);
+.addEventListener("submit", signUpFormHandler);
