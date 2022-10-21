@@ -1,0 +1,113 @@
+body {
+    background-color: #d9ead3;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+}
+
+.card {
+    border: solid black;
+    margin: 65px 350px;
+
+}
+
+.card-header h2 {
+    background-color: #231010;
+    color: #d9ead3;
+    margin: 0px;
+    padding: 10px;
+}
+
+.navbar ul {
+    padding: 15px;
+}
+
+ul {
+    background-color: #231010;
+    list-style-type: none;
+    /* text-align: end; */
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    display: inline;
+    margin: 10px;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #d9ead3;
+}
+
+a:hover {
+    background-color: #d9ead3;
+    color: #231010;
+}
+
+.hero {
+    background-color: #231010;
+    padding: 30px;
+}
+
+.card-body {
+    margin: 10px;
+}
+
+.card-body a {
+    color: #231010;
+}
+
+.card-body a:hover{
+    background-color: #231010;
+    color: #d9ead3;
+}
+
+.username {
+    margin: 10px;
+}
+
+.password {
+    margin: 10px;
+}
+
+.card-body input {
+    width: -webkit-fill-available;
+}
+
+.btn {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.app-title {
+    margin: 0px;
+}
+
+/* .card-body {
+    grid-area: form;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 'login form';
+    gap: 10px;
+    padding: 10px;
+} */
+
+footer {
+    position: absolute;
+    margin-top: 0;
+    bottom: 0;
+    /* border-bottom: 100px solid #4F4846; */
+    color: black;
+}

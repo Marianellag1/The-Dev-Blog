@@ -10,43 +10,50 @@ router.get('/', async (req, res) => {
                 {
                     model: User,
                     attributes: [
-                        "name"
+                        "username"
                     ],
                 },
             ],
         });
         //serializing the data sot that template can be read.
         const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+        res.render('/dashboard', {
+            ...posts,
+            loggedIn: req.session.loggedIn
+        });
     } catch (err) {
-        res.redirect('login')
-        //res.status(500).json(err) ->maybe?
+        // res.redirect('login')
+        res.status(500).json(err);
     }
 });
 
 
 //get single post
-router.get('/post/:id', withAuth, async (req, res) => {
-    try {
-        const postData = await Post.findByPk({
-            where: {
-                id: req.session.id
-            },
-            include: [
+// router.get('/post/:id', withAuth, async (req, res) => {
+//     try {
+//         const postData = await Post.findByPk({
+//             where: {
+//                 id: req.session.id
+//             },
+//             include: [
 
-                User, {
-                    model: Comment,
-                    include: [User]
-                },
-            ]
-        });
-        const posts = postData.map((post) =>
-            post.get({ plain: true }));
-        res.render('single-post', { posts, loggedIn: req.session.loggedIn })
-    } catch (err) {
-        res.redirect('login')
-    }
-})
+//                 User, {
+//                     model: Comment,
+//                     include: [User]
+//                 },
+//             ]
+//         });
+//         const posts = postData.map((post) =>
+//             post.get({ plain: true }));
+//         res.render('single-post', {
+//             ...posts,
+//             loggedIn: req.session.loggedIn
+//         });
+//     } catch (err) {
+//         // res.redirect('login')
+//         res.status(500).json(err);
+//     }
+// })
 
 //login route
 router.get('/signup', (req, res) => {
@@ -59,10 +66,11 @@ router.get('/signup', (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/dashboard');
         return;
     }
     res.render('login');
+
 });
 
 module.exports = router;
