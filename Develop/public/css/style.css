@@ -108,6 +108,7 @@ footer {
     position: absolute;
     margin-top: 0;
     bottom: 0;
-    /* border-bottom: 100px solid #4F4846; */
-    color: black;
+    width: 100%;
+    color: #d9ead3;
+    background-color: #231010;
 }

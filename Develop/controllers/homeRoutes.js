@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 //get all post
 router.get('/', async (req, res) => {
@@ -17,8 +17,9 @@ router.get('/', async (req, res) => {
         });
         //serializing the data sot that template can be read.
         const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('/dashboard', {
-            ...posts,
+
+        res.render('login', {
+        posts,
             loggedIn: req.session.loggedIn
         });
     } catch (err) {
