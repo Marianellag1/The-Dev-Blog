@@ -18,8 +18,10 @@
 
 
 ---
+![Screenshot 2022-10-27 162744](https://user-images.githubusercontent.com/110939445/198401958-47085fe1-14de-4d57-88d5-bdebfd1c6a49.png)
 
-## **Description of the Project**
+## **Description of the Project**![Screenshot 2022-10-27 162848](https://user-images.githubusercontent.com/110939445/198401995-a577bbfc-75f0-41ec-b525-e084e34cb5fa.png)
+
 The Dev Blog is a social-blog, in which web developers can come together to post comments.
 
 
