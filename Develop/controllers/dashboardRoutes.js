@@ -13,14 +13,15 @@ router.get('/', withAuth, async (req, res) => {
             include: [
                 { 
                     model: User,
-                attributes: [ 'username'] 
-            }
+                attributes: [ 'username']
+            },
         ]
         });
     
         const posts = postData.map((post) => post.get({ plain: true }));
 
-        res.render('dashboard', {
+        res.render('all-posts-admin', {
+            layout: 'dashboard',
         posts, 
              loggedIn: req.session.loggedIn });
     } catch (err) {
@@ -29,34 +30,34 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-// router.get('/', withAuth, async (req, res) => {
-//     try {
-//         const postData = await User.findByPk(req.session.user_id, {
-//             attributes: {
-//                 exclude: [
-//                     "password"
-//                 ]
-//             },
-//             include: [{ model: Post }],
-//         });
-//         const user = postData.get({ plain: true });
-//         res.render('/dashboard', {
-//             ...user,
-//             loggedIn: true
-//         });
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// });
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const postData = await User.findByPk(req.session.user_id, {
+            attributes: {
+                exclude: [
+                    "password"
+                ]
+            },
+            include: [{ model: Post }],
+        });
+        const user = postData.get({ plain: true });
+        res.render('/dashboard', {
+            ...user,
+            loggedIn: true
+        });
+    } catch (err) {
+        res.status(500).json(err)
+    }
+});
 
-//GET new post
-// router.get('/new', withAuth, (req, res) => {
-//     res.render('new-post', {
-//         layout: 'dashboard'
-//     })
-// })
+// GET new post
+router.get('/new', withAuth, (req, res) => {
+    res.render('new-post', {
+        layout: 'dashboard'
+    })
+})
 
-//GET
+// GET
 // router.get('/edit/:id', async (req, res) => {
 //     try {
 //         const postData = await Post.findByPk(req.params.id);
@@ -79,3 +80,7 @@ module.exports = router;
 // THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
 // WHEN I click on one of my existing posts in the dashboard
 // THEN I am able to delete or update my post and taken back to an updated dashboard
+
+//check if this works here>>>>>>>>>
+// get single post
+

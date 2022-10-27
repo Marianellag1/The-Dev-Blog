@@ -107,8 +107,13 @@ a:hover {
 footer {
     position: absolute;
     margin-top: 0;
+    padding-top: 20px;
     bottom: 0;
     width: 100%;
     color: #d9ead3;
     background-color: #231010;
+}
+
+footer a {
+   font-size: xx-large;
 }
